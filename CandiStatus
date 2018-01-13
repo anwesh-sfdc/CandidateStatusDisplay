@@ -1,1 +1,46 @@
 
+<!--
+*author:Anwesh
+*Description:Display Cadidate Status Based on Pick List Value either reject or Select
+-->
+<apex:page standardController="Candidates__c">
+    <style type="text/css">
+        * {
+          font-family: Roboto;
+        }
+
+        div.message {
+          position: relative;
+          padding: 5px;
+          padding-left: 35px;
+          margin: 20px 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+          background: #BBB;
+          color: #FFF;
+        }
+
+        div.message.Rejected {
+            color: white;
+            background:#ea4c12;
+        }
+        
+        div.message.selected {
+            color: white;
+            background: #09a536;
+        }
+    </style>
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:300italic,400italic,400,300,600,700" rel="stylesheet" type="text/css" />
+   
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+   <div class="Rejected message" style="display: {!IF(Candidates__c.Status__c = 'Rejected', '', 'none')}" >
+       
+      <h2>Candidate Rejected</h2> <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+    </div>
+    
+    <div class="selected message" style="display: {!IF(Candidates__c.Status__c = 'Selected', '', 'none')}" >
+       
+      <h2>candidate selected</h2> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+    </div>
+</apex:page>
